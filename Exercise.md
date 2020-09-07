@@ -1,4 +1,4 @@
-### Exercise 1-3
+### Exercise 1-3: 华氏温度—>摄氏温度
 
 ```c
 #include <stdio.h>
@@ -52,7 +52,109 @@ Notes:
      * 3表示数字宽；
      * .0表示小数点后保留几位。
 
+### Exercise 1-6: Test the value of `getchar()!=EOF`, 0 or 1?
 
+```c
+#include <stdio.h>
+int main(){
+    printf("getchar() != EOF --> %d\n", getchar() != EOF);
+}
+```
+
+Output:
+
+```bash
+s
+getchar() != EOF --> 1
+//Ctrl+D -- Mac的EOF
+getchar() != EOF --> 0
+```
+
+Notes: 
+
+1. `getchar()`只要用一次，就会引起一次terminal输入；
+2. `putchar()`可以像printf那么用，直接输出一个字符。本题输出的是0或1，所以可以用putchar而不是printf。
+
+犯的错误：
+
+```c
+#include <stdio.h>
+int main(){
+    int c;
+    while(c = getchar()!=EOF){//把赋值当做条件 --> 编译warning
+        putchar(c);
+    }
+}
+```
+
+### Exercise 1-7: print the value of EOF
+
+```c
+#include <stdio.h>
+int main(){
+    printf("%d\n",EOF);  //-1
+}
+```
+
+### Exercise 1-8: 
+
+```c
+#include <stdio.h>
+int main(){
+    int c, space, tab, nl;
+    space = tab = nl = 0;
+    while(getchar()!=EOF){
+        if(c=='\t'){
+            ++tab;
+        }
+        if(c=='\n'){
+            ++nl;
+        }
+        if(c==' '){
+            ++space;
+        }
+    }
+    printf("There are %d spaces, %d tabs and %d newlines.\n", space, tab, nl);
+}
+```
+
+结果全是0.
+
+### Exercise 1.6
+
+```c
+#include <stdio.h>
+// #include <math.h>
+int main(){
+    int c,i,nwhite,nother;
+    int ndigit[10];
+
+    nwhite = nother = 0;
+    for(i=0;i<10;i++){
+        ndigit[i]=0;
+    }
+
+    while((c=getchar())!=EOF){
+        if(c>='0'&&c<='9'){
+            ndigit[c-'0']++;
+            printf("%d",c-'0');
+        }
+        else if(c==' '||c=='\n'||c=='\t'){
+            nwhite++;
+        }
+        else{
+            nother++;
+        }
+    }
+    printf("digits=");
+    for(i=0;i<10;i++){
+        printf(" %d",ndigit[i]);
+    }
+    printf(", white space = %d, other = %d\n", nwhite, nother);
+}
+//输入本程序全文，得：
+//digits= 10 3 0 0 0 0 0 0 0 1, white space = 207, other = 363
+```
 
 
 
