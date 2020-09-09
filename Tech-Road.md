@@ -152,12 +152,13 @@
 4. 强制转换
 
    ```c
+   //(int)(x+y);
+   //(float)a;
+
    void main(){
      float x = 3.2, y = 1.0;
      int a = 10;
-     (int)(x+y);
-     (float)a;
-     printf("%d, %f", x+y, a);
+     printf("%d, %f", (int)(x+y), (float)a);
    }
    ```
 
