@@ -158,6 +158,9 @@
    * eg: `  (int)(x+y);` ` (float)a;`
 
    ```c
+   //(int)(x+y);
+   //(float)a;
+
    void main(){
      float x = 3.2, y = 1.0;
      int a = 10;
