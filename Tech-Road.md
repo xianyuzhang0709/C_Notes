@@ -158,16 +158,13 @@
    * eg: `  (int)(x+y);` ` (float)a;`
 
    ```c
-   //(int)(x+y);
-   //(float)a;
-
    void main(){
      float x = 3.2, y = 1.0;
-     int a = 10;
+  int a = 10;
      printf("%d, %f", (int)(x+y), (float)a);
    }
    ```
-
+   
 5. 赋值
 
    `a = a+b;`可以缩写为`a += b;` 
