@@ -37,5 +37,5 @@ int main(void)
 
 **Note:** Some compilers may show the result of the expression as 1 and other may show -1. It depends on the [compiler](https://www.geeksforgeeks.org/introduction-of-compiler-design/).
 
-结果的符号总是跟x相同。
+对于负数参与%运算，其结果的符号总是跟x相同。
 
