@@ -94,7 +94,7 @@ void main(){
 
 2. 点击”调试“，选择”启动调试“，系统就会自动完成从编译到执行的全部动作，你将在控制台中看到你输出的结果：
 
-![](An_introduction_to_C_IDE.assets/image-2021-01-27 211350.png)
+![](An_introduction_to_C_IDE.assets/image-2021-01-27211350.png)
 
 * 注意，在每一次重新启动调试的时候，都要关闭之前的控制台窗口，才能成功启动下一次程序调试。
 
