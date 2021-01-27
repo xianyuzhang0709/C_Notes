@@ -29,6 +29,8 @@ For each of the following pairs of `scanf` format strings, indicate whether or n
 
 * white-space characters in format string match **ANY** number of white-space characters in the input string (including none).
 
+### - Review Notes -
+
 > **C**标准中**空白字符**有：空格（' '）、换页（'\f'）、换行（'\n'）、回车（'\r'）、水平制表符（'\t'）、垂直制表符（'\v'）六个。
 
 > 总结C语言中的scanf读取方式：
@@ -49,3 +51,42 @@ For each of the following pairs of `scanf` format strings, indicate whether or n
 >    * 匹配成功，则进入下面的步骤。
 >    * 匹配失败，则退出，将读取的字符放回，同剩下的字符一起留给后面的输入函数读取。
 
+### Exercise 3.04
+
+Suppose that we call `scanf` as follows:
+
+```
+scanf("%d%f%d", &i, &x, &j);
+```
+
+If the user enters
+
+```
+10.3 5 6
+```
+
+what will be the values of `i`, `x` and `j` after the call? (Assume that `i` and `j` are `int` variables and `x` is a `float` variable.)
+
+### Solution
+
+```
+i = 10
+x = 0.3
+j = 5
+```
+
+The decimal point will end the input for `i` and begin `x`, and the next input, 5, will be assigned to `j`.
+
+> `10.3 5 6`
+>
+> 为%d读取：`1` `0` `.` —— `.` 不可能是int类型数字中存在的字符，所以把`.`放回，把10存入i。
+>
+> `.3 5 6`
+>
+> 为%f读取：`.` `3` ` ` —— 空格不可能是float或double类型中存在的字符，所以把空格放回，把0.3存入x。
+>
+> `_5 6` （为了方便显示，这里用_代替空格）
+>
+> 为%d读取：` ` —— 空格读取并丢掉。`5` ` ` —— 空格不可能是int类型中存在的字符，把空格放回，把5存入j。结束。
+>
+> `_6`
