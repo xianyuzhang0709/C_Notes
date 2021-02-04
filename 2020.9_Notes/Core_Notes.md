@@ -136,3 +136,69 @@ void mian(){
 
 ![image-20210203223954424](Core_Notes.assets/image-20210203223954424.png)
 
+* the array name will return us a pointer to the first element of the array
+* `int (*p)[3] = B;`
+  * So B wil return us a one-dimensonal array of 3 elements
+  * a variable witch is pointed to one-dimensional array of 3 integers
+  * and the name of the varible is p
+
+* B会给我们返回a pointer to one-d array of 3 integers
+* *B 会给我们返回a pointer to an integer
+
+![image-20210204113536365](Core_Notes.assets/image-20210204113536365.png)
+
+
+
+
+
+三维数组与指针：
+
+![image-20210204113705049](Core_Notes.assets/image-20210204113705049.png)
+
+
+
+> 关于二维数组作为参数练习：
+>
+> ```c
+> #include <stdio.h>
+> #define LEN 10
+> 
+> int sum_2D_array(const int a[][LEN],int n){
+>     int sum=0, *p;
+>     for(p=a[0];p<a[0]+n;p++){  //a是二维数组名，是指一维数组的指针。a[0]是第一个一维数组的第一个元素，是一个整数指针。
+>         sum+=*p;
+>     }
+>     return sum;  //只需要找到第一个元素，和(知道)n，就可以根据连续地址，找到所有数组里的元素。
+> }
+> int sum_1_col(const int a[][LEN], int n, int i){
+>     int sum=0,(*p)[LEN];
+>     for(p=a;p<a+n;p++)  //a是二维数组名，是指向一维数组的指针，p++可以逐个访问所有一维数组。
+>     	sum += (*p)[i];  //*p得到该一维数组的第一个数的整数指针，**p是第一个一维数组第一个整数。
+>   	//一维数组中：p[i], 是整数指针p右移i位，然后取值。p[i]==*(p+i)。
+>   	//二维数组中：a是指向第一个一维数组的指针
+>   					//  *a是第一个一维数组的第一个元素的指针（整数指针）
+>   					//  *a[i]是第一个一维数组的第一个元素的指针右移i位，然后取值。即*(*p+i),*p第一个元素右移2位，然后取值。
+>     return sum;
+> }
+> int main(int argc, const char * argv[]) {
+>     
+>     int a[3][10] = {0,1,2,3,4,5,6,7,8,9,
+>                     10,11,12,13,14,15,16,17,18,19,
+>                     20,21,22,23,24,25,26,27,28,29};
+>     int s = sum_2D_array(a,30);
+>     printf("%d\n",s);
+>     int s2 = sum_1_col(a,3,1);
+>     printf("%d\n",s2);
+>     printf("%d\n",*a[1]);  //10
+>     printf("%d\n",(*a)[1]);//1
+> }
+> //435
+> //33
+> ```
+>
+> * 写法不易阅读，容易误解，要努力记忆。
+> * 数组中：指针[i] == 指针右移i位然后取值。
+> * 二维数组中：*a == 第一维数组的第一个元素的指针。**a则取到了第一个元素。a是二维数组的第一个一维数组的指针。
+>   * *a[i]就是第一个元素右移 i 然后取值
+> * 不对，未解决：`(*P)[i]和*p[i]`的区别。
+
