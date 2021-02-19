@@ -238,3 +238,5 @@ void mian(){
 2.10 13.6 done
 
 2.12 13 done
+
+2.19 slide 2
