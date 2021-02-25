@@ -240,3 +240,5 @@ void mian(){
 2.12 13 done
 
 2.19 slide 2
+
+2.25 slide notes 3~6.2
