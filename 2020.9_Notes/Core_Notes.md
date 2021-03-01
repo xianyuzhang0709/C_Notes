@@ -248,3 +248,5 @@ void mian(){
 2.27 slide notes exercise 234 done
 
 2.28 exercise 2-5 done
+
+3.1 slide note 8 start 。。。
